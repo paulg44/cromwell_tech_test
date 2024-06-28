@@ -10,3 +10,14 @@ export async function addNewUserController(req, res) {
     res.status(500).json({ error: "Add new user failed" });
   }
 }
+
+export async function loginUserController(req, res) {
+  try {
+    const data = req.body;
+    const user = await userModel.loginUser(data);
+    console.log(`Success logging in as ${user.rows}`);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ error: "Error signing in" });
+  }
+}

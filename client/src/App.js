@@ -13,14 +13,43 @@ function App() {
       password: password,
     };
 
-    await fetch("user/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUser),
-    });
-    console.log("Successfully added new user:", newUser);
+    try {
+      const response = await fetch("user/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      });
+      if (response.ok) {
+        console.log("Successfully added new user:", newUser);
+      }
+    } catch (error) {
+      console.error("Error adding new user");
+    }
+  }
+
+  // Log In user function
+  async function loginUserToSystem(email, password) {
+    const user = {
+      email: email,
+      password: password,
+    };
+
+    try {
+      const response = await fetch("/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+      if (response.ok) {
+        console.log("Successfully signed in as:", user);
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+    }
   }
   return (
     <BrowserRouter>
@@ -29,7 +58,7 @@ function App() {
           path="/"
           element={<Register registerUser={addNewUserRegistration} />}
         />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login login={loginUserToSystem} />} />
       </Routes>
     </BrowserRouter>
   );

@@ -16,3 +16,31 @@ export async function addUser(body) {
     throw error;
   }
 }
+
+export async function loginUser(body) {
+  const { email, password } = body;
+
+  try {
+    const client = await pool.connect();
+    const loginUserQuery = await client.query(
+      "SELECT * FROM users WHERE email = $1",
+      [email]
+    );
+    client.release();
+
+    if (loginUserQuery.rows.length === 0) {
+      throw new Error("User not found");
+    }
+
+    const user = loginUserQuery.rows[0];
+
+    if (user.password !== password) {
+      throw new Error("Invalid Password");
+    }
+
+    return user;
+  } catch (error) {
+    console.error("Error logging in user:", error);
+    throw error;
+  }
+}
