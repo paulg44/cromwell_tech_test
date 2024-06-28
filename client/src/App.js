@@ -1,10 +1,12 @@
 import "./App.css";
-import { React } from "react";
+import { React, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./Pages/Register/Register";
 import Login from "./Pages/Login/Login";
+import Landing from "./Pages/Landing/Landing";
 
 function App() {
+  const [userId, setUserId] = useState(null);
   // New user registration function
   async function addNewUserRegistration(name, email, password) {
     const newUser = {
@@ -37,7 +39,7 @@ function App() {
     };
 
     try {
-      const response = await fetch("/user/login", {
+      const response = await fetch("user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,6 +47,8 @@ function App() {
         body: JSON.stringify(user),
       });
       if (response.ok) {
+        const userData = await response.json();
+        setUserId(userData.id);
         console.log("Successfully signed in as:", user);
       }
     } catch (error) {
@@ -59,6 +63,7 @@ function App() {
           element={<Register registerUser={addNewUserRegistration} />}
         />
         <Route path="/login" element={<Login login={loginUserToSystem} />} />
+        <Route path="/landing" element={<Landing userId={userId} />} />
       </Routes>
     </BrowserRouter>
   );

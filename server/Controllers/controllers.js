@@ -21,3 +21,13 @@ export async function loginUserController(req, res) {
     res.status(500).json({ error: "Error signing in" });
   }
 }
+
+export async function getLoggedInUserController(req, res) {
+  try {
+    const id = req.params.id;
+    const loggedInUser = await userModel.getLoggedInUserData(id);
+    res.status(200).json(loggedInUser.rows[0]);
+  } catch (error) {
+    res.status(500).json({ error: "Error getting logged in user" });
+  }
+}

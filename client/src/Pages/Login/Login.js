@@ -1,15 +1,23 @@
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function Login({ login }) {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const navigate = useNavigate();
 
   async function handleUserLogin(e) {
     e.preventDefault();
 
-    login(loginEmail, loginPassword);
+    try {
+      await login(loginEmail, loginPassword);
+      navigate("/landing");
+    } catch (error) {
+      console.error("error logging in");
+    }
   }
+
   return (
     <div>
       <h2>Please Log In</h2>

@@ -23,8 +23,8 @@ export async function loginUser(body) {
   try {
     const client = await pool.connect();
     const loginUserQuery = await client.query(
-      "SELECT * FROM users WHERE email = $1",
-      [email]
+      "SELECT * FROM users WHERE (email, password) = ($1, $2)",
+      [email, password]
     );
     client.release();
 
@@ -41,6 +41,21 @@ export async function loginUser(body) {
     return user;
   } catch (error) {
     console.error("Error logging in user:", error);
+    throw error;
+  }
+}
+
+export async function getLoggedInUserData(id) {
+  try {
+    const client = await pool.connect();
+    const loggedInUserQuery = await client.query(
+      "SELECT * FROM users WHERE id = $1",
+      [id]
+    );
+    client.release();
+    return loggedInUserQuery;
+  } catch (error) {
+    console.error("Error getting logged in user", error);
     throw error;
   }
 }
