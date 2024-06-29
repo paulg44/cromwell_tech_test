@@ -1,3 +1,4 @@
+import "./Login.css";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,10 +20,10 @@ function Login({ login }) {
   }
 
   return (
-    <div>
+    <div className="login">
       <h2>Please Log In</h2>
-      <Form onSubmit={handleUserLogin}>
-        <Form.Group controlId="emailLogin">
+      <Form onSubmit={handleUserLogin} className="form">
+        <Form.Group className="mb-4" controlId="emailLogin">
           <Form.Label>Enter Email</Form.Label>
           <Form.Control
             type="email"
@@ -31,7 +32,7 @@ function Login({ login }) {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group controlId="passwordLogin">
+        <Form.Group className="mb-4" controlId="passwordLogin">
           <Form.Label>Enter Password</Form.Label>
           <Form.Control
             type="password"
@@ -40,7 +41,7 @@ function Login({ login }) {
           ></Form.Control>
         </Form.Group>
 
-        <Button type="submit" variant="primary">
+        <Button type="submit" style={{ background: "#ff5200", border: "none" }}>
           Login
         </Button>
       </Form>

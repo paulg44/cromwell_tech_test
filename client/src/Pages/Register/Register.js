@@ -1,3 +1,4 @@
+import "./Register.css";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { React, useState } from "react";
@@ -21,10 +22,10 @@ function Register({ registerUser }) {
     navigate("/login");
   }
   return (
-    <div>
+    <div className="register">
       <h2>Please enter registration details</h2>
       <Form onSubmit={handleAddNewUser}>
-        <Form.Group controlId="nameRegistration">
+        <Form.Group className="mb-4" controlId="nameRegistration">
           <Form.Label>Enter Name</Form.Label>
           <Form.Control
             type="text"
@@ -33,7 +34,7 @@ function Register({ registerUser }) {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group controlId="emailRegistration">
+        <Form.Group className="mb-4" controlId="emailRegistration">
           <Form.Label>Enter Email</Form.Label>
           <Form.Control
             type="email"
@@ -42,7 +43,7 @@ function Register({ registerUser }) {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group controlId="passwordRegistration">
+        <Form.Group className="mb-4" controlId="passwordRegistration">
           <Form.Label>Enter Password</Form.Label>
           <Form.Control
             type="password"
@@ -51,7 +52,10 @@ function Register({ registerUser }) {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group controlId="passwordConfirmationRegistration">
+        <Form.Group
+          className="mb-4"
+          controlId="passwordConfirmationRegistration"
+        >
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             type="password"
@@ -60,11 +64,11 @@ function Register({ registerUser }) {
           ></Form.Control>
         </Form.Group>
 
-        <Button type="submit" variant="primary">
+        <Button type="submit" style={{ background: "#ff5200", border: "none" }}>
           Register
         </Button>
-        <Link to={"/login"}>Already registered? Login.</Link>
       </Form>
+      <Link to={"/login"}>Already registered? Login.</Link>
     </div>
   );
 }

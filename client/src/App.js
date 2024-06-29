@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./Pages/Register/Register";
 import Login from "./Pages/Login/Login";
 import Landing from "./Pages/Landing/Landing";
+import Homepage from "./Pages/Homepage/Homepage";
+import Navbar from "./Components/Navbar";
 
 function App() {
   const [userId, setUserId] = useState(null);
@@ -57,9 +59,11 @@ function App() {
   }
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
+        <Route path="/" element={<Homepage />} />
         <Route
-          path="/"
+          path="/register"
           element={<Register registerUser={addNewUserRegistration} />}
         />
         <Route path="/login" element={<Login login={loginUserToSystem} />} />
