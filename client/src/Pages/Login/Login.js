@@ -11,11 +11,12 @@ function Login({ login }) {
   async function handleUserLogin(e) {
     e.preventDefault();
 
-    try {
+    if (!loginEmail || !loginPassword) {
+      alert("Username and Password fields are required");
+      return;
+    } else {
       await login(loginEmail, loginPassword);
       navigate("/landing");
-    } catch (error) {
-      console.error("error logging in");
     }
   }
 

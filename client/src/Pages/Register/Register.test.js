@@ -42,15 +42,15 @@ test("calls registeUser when the form is submitted", async () => {
   user.keyboard("paul@paul.com");
 
   user.click(password);
-  user.keyboard("test");
+  user.keyboard("test1234");
 
   user.click(confirmPassword);
-  user.keyboard("test");
+  user.keyboard("test1234");
 
   const button = screen.getByRole("button");
 
   user.click(button);
 
   expect(mock).toHaveBeenCalled();
-  expect(mock).toHaveBeenCalledWith("Paul", "paul@paul.com", "test");
+  expect(mock).toHaveBeenCalledWith("Paul", "paul@paul.com", "test1234");
 });

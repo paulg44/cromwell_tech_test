@@ -34,6 +34,7 @@ function Register({ registerUser }) {
 
     if (checkPasswordValidation(password)) {
       await registerUser(name, email, password);
+      alert(`Welcome ${name}. You can now log in with your email and password`);
       navigate("/login");
     }
   }

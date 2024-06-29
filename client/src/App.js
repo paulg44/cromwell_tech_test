@@ -16,7 +16,6 @@ function App() {
       email: email,
       password: password,
     };
-
     try {
       const response = await fetch("user/register", {
         method: "POST",
