@@ -1,5 +1,5 @@
 import { Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { React, useState } from "react";
 
 function Register({ registerUser }) {
@@ -7,6 +7,7 @@ function Register({ registerUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  const navigate = useNavigate();
 
   function handleAddNewUser(e) {
     e.preventDefault();
@@ -17,6 +18,7 @@ function Register({ registerUser }) {
     }
 
     registerUser(name, email, password);
+    navigate("/login");
   }
   return (
     <div>
