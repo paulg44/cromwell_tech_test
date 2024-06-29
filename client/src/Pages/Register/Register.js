@@ -10,16 +10,32 @@ function Register({ registerUser }) {
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const navigate = useNavigate();
 
-  function handleAddNewUser(e) {
+  async function handleAddNewUser(e) {
     e.preventDefault();
 
-    if (password !== passwordConfirm) {
-      console.error("Passwords do not match");
-      return;
+    // Password Validation
+    function checkPasswordValidation(password) {
+      const passwordRegex = /^[A-Za-z]\w{7,14}$/;
+
+      if (password.match(passwordRegex)) {
+        if (password === passwordConfirm) {
+          return true;
+        } else {
+          alert("Passwords do not match!");
+          return false;
+        }
+      } else {
+        alert(
+          "Password must contain 7 to 16 characters which contain only characters, numeric digits, underscore and first character must be a letter"
+        );
+        return false;
+      }
     }
 
-    registerUser(name, email, password);
-    navigate("/login");
+    if (checkPasswordValidation(password)) {
+      await registerUser(name, email, password);
+      navigate("/login");
+    }
   }
   return (
     <div className="register">
@@ -29,6 +45,7 @@ function Register({ registerUser }) {
           <Form.Label>Enter Name</Form.Label>
           <Form.Control
             type="text"
+            required
             value={name}
             onChange={(e) => setName(e.target.value)}
           ></Form.Control>
@@ -38,6 +55,7 @@ function Register({ registerUser }) {
           <Form.Label>Enter Email</Form.Label>
           <Form.Control
             type="email"
+            required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
@@ -47,6 +65,7 @@ function Register({ registerUser }) {
           <Form.Label>Enter Password</Form.Label>
           <Form.Control
             type="password"
+            required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
@@ -59,6 +78,7 @@ function Register({ registerUser }) {
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             type="password"
+            required
             value={passwordConfirm}
             onChange={(e) => setPasswordConfirm(e.target.value)}
           ></Form.Control>
