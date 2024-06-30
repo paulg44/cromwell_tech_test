@@ -11,7 +11,7 @@ const { Pool } = pkg;
 
 const app = express();
 
-const port = process.env.REACT_APP_PORT;
+const PORT = process.env.REACT_APP_PORT;
 const connectionString = process.env.REACT_APP_DB_STRING;
 
 export const pool = new Pool({
@@ -26,6 +26,6 @@ app.use(cors());
 
 app.use("/user", userRoutes);
 
-app.listen(port, () => {
-  console.log(`Server is listening on ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is listening on ${PORT}`);
 });
