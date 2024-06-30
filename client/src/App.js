@@ -1,13 +1,20 @@
 import "./App.css";
 import { React, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import dotenv from "dotenv";
 import Register from "./Pages/Register/Register";
 import Login from "./Pages/Login/Login";
 import Landing from "./Pages/Landing/Landing";
 import Homepage from "./Pages/Homepage/Homepage";
 import Navbar from "./Components/Navbar";
 
+// dotenv.config();
+
 function App() {
+  // const deploy = process.env.REACT_BACKEND_URL;
+  const deploy = "https://cromwell-tech-test.onrender.com";
+  // const dev = "/user/login";
+
   const [userId, setUserId] = useState(null);
   const [userName, setUserName] = useState(null);
 
@@ -42,7 +49,7 @@ function App() {
     };
 
     try {
-      const response = await fetch("user/login", {
+      const response = await fetch(`${deploy}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
