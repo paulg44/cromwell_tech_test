@@ -29,16 +29,16 @@
 ## Run Locally
 
 CD into client directory
-cd client
+- cd client
 
 Install any dependencies
-npm install
+- npm install
 
 Start react app
-npm start
+- npm start
 
 Or to run tests
-npm test
+- npm test
 
 To make application work in development theres a few more steps
 
