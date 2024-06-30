@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 
-function Landing({ userId }) {
+function Landing({ userId, handleLogout }) {
   const [user, setUser] = useState(null);
   // Fetched the logged in users data
   useEffect(() => {
@@ -33,7 +33,9 @@ function Landing({ userId }) {
       ) : (
         <p>Loading user...</p>
       )}
-      <Link to={"/login"}>Log Out</Link>
+      <Link to={"/login"} onClick={handleLogout}>
+        Log Out
+      </Link>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import "./Navbar.css";
 import cromwellLogo from "../IMG/cromwell_logo.jpg";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ userName, handleLogout }) {
   return (
     <nav>
       <div className="searchBar">
@@ -13,8 +13,19 @@ function Navbar() {
       </div>
 
       <div className="icons">
-        <Link to="/login">Log In</Link>
-        <Link to="register">Register</Link>
+        {userName ? (
+          <>
+            <span>Welcome {userName}</span>
+            <Link to="/login" onClick={handleLogout}>
+              Logout
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="register">Register</Link>
+          </>
+        )}
       </div>
     </nav>
   );

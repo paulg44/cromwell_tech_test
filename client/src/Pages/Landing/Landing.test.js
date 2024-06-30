@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import Landing from "./Landing";
-import { createServer } from "../../test/server";
+// import { createServer } from "../../test/server";
 import { MemoryRouter } from "react-router-dom";
 import { SWRConfig } from "swr";
 
-async function renderComponent(userId) {
+async function renderComponent({ userId }) {
   render(
     <SWRConfig value={{ provider: () => new Map() }}>
       {" "}

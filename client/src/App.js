@@ -9,6 +9,8 @@ import Navbar from "./Components/Navbar";
 
 function App() {
   const [userId, setUserId] = useState(null);
+  const [userName, setUserName] = useState(null);
+
   // New user registration function
   async function addNewUserRegistration(name, email, password) {
     const newUser = {
@@ -50,15 +52,21 @@ function App() {
       if (response.ok) {
         const userData = await response.json();
         setUserId(userData.id);
+        setUserName(userData.name);
         console.log("Successfully signed in as:", user);
       }
     } catch (error) {
       console.error("Network error:", error);
     }
   }
+
+  function handleLogout() {
+    setUserId(null);
+    setUserName(null);
+  }
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar userName={userName} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route
@@ -66,7 +74,10 @@ function App() {
           element={<Register registerUser={addNewUserRegistration} />}
         />
         <Route path="/login" element={<Login login={loginUserToSystem} />} />
-        <Route path="/landing" element={<Landing userId={userId} />} />
+        <Route
+          path="/landing"
+          element={<Landing userId={userId} handleLogout={handleLogout} />}
+        />
       </Routes>
     </BrowserRouter>
   );
