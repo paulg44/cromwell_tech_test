@@ -4,12 +4,12 @@ import Landing from "./Landing";
 import { MemoryRouter } from "react-router-dom";
 import { SWRConfig } from "swr";
 
-async function renderComponent({ userId }) {
+async function renderComponent() {
   render(
     <SWRConfig value={{ provider: () => new Map() }}>
       {" "}
       <MemoryRouter>
-        <Landing userId={userId} />
+        <Landing />
       </MemoryRouter>
     </SWRConfig>
   );
