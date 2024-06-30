@@ -12,8 +12,11 @@ import Navbar from "./Components/Navbar";
 
 function App() {
   // const deploy = process.env.REACT_BACKEND_URL;
-  const deploy = "https://cromwell-tech-test.onrender.com";
-  // const dev = "/user/login";
+  const deployRegister =
+    "https://cromwell-tech-test.onrender.com/user/register";
+  // const devRegister = "/user/register";
+  const deployLogin = "https://cromwell-tech-test.onrender.com/user/login";
+  // const devLogin = "/user/login";
 
   const [userId, setUserId] = useState(null);
   const [userName, setUserName] = useState(null);
@@ -26,7 +29,7 @@ function App() {
       password: password,
     };
     try {
-      const response = await fetch("user/register", {
+      const response = await fetch(`${deployRegister}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,7 +52,7 @@ function App() {
     };
 
     try {
-      const response = await fetch(`${deploy}`, {
+      const response = await fetch(`${deployLogin}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
