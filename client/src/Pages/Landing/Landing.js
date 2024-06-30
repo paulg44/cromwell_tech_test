@@ -6,9 +6,12 @@ function Landing({ userId, handleLogout }) {
   const [user, setUser] = useState(null);
   // Fetched the logged in users data
   useEffect(() => {
+    // const fetchUserdev = `/user/get`
+    const fetchUserDeploy = `https://cromwell-tech-test.onrender.com/user/get`;
+
     async function fetchLoggedInUser(id) {
       try {
-        const response = await fetch(`/user/get/${id}`);
+        const response = await fetch(`${fetchUserDeploy}/${id}`);
         console.log(response);
         if (response.ok) {
           const userData = await response.json();
