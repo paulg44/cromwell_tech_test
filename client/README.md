@@ -7,16 +7,23 @@
 - Bootstrap: simple out of the box CSS framework
 - React Testing Library: In-built testing library for unit tests
 
+## Pages/Components
+
+- Navbar: Includes as logo embedded with a link to the homepage. A search bar(not usable). Two links to Login and Register
+- Homepage: Basic start of homepage
+- Registration: Form that takes a user's username, email, password and confirm password. Sends a POST request to /user/register on submission.
+- Login: Form that takes a user's email and password. Sends a POST request to /user/login on submission.
+- Landing: Basic landing page that is navigated to when user logs in.
+
+## Component Tree
+
 ## Future Goals (if I had more time)
 
 - More tests, particularly focusing on mocking the fetched data. I did start some of these, however, the way my application is set up I haven't found it easy to test. Because I put both the main fetch tests in the App.js file (I did this incase I added Auth) I've nopt been able to test the landing page adequately.
 - Responsiveness of application
-- More data on landing page
+- More data on landing page and homepage
 
 ## Run Locally
-
-Clone repository
-git clone https://github.com/paulg44/cromwell_tech_test.git
 
 CD into client directory
 cd client

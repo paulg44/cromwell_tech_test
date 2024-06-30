@@ -18,9 +18,6 @@ Cromwell Tech Test Backend
 
 ## Run server locally
 
-Clone repository
-git clone https://github.com/paulg44/cromwell_tech_test.git
-
 CD into client directory
 cd server
 

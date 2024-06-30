@@ -32,6 +32,7 @@ function Register({ registerUser }) {
       }
     }
 
+    // If all fields are filled and password is accepted, this code runs
     if (checkPasswordValidation(password)) {
       await registerUser(name, email, password);
       alert(`Welcome ${name}. You can now log in with your email and password`);

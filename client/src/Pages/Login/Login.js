@@ -11,6 +11,7 @@ function Login({ login }) {
   async function handleUserLogin(e) {
     e.preventDefault();
 
+    // Expect both input fields to be filled
     if (!loginEmail || !loginPassword) {
       alert("Username and Password fields are required");
       return;

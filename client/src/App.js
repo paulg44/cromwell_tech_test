@@ -17,6 +17,7 @@ function App() {
   const deployLogin = "https://cromwell-tech-test.onrender.com/user/login";
   // const devLogin = "/user/login";
 
+  // state to be passed down to landing page to display user data
   const [userId, setUserId] = useState(null);
   const [userName, setUserName] = useState(null);
 

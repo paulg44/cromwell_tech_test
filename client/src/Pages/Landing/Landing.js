@@ -11,6 +11,7 @@ function Landing({ userId, handleLogout }) {
 
     async function fetchLoggedInUser(id) {
       try {
+        // Display the logged in user by id passed down from app
         const response = await fetch(`${fetchUserDeploy}/${id}`);
         console.log(response);
         if (response.ok) {
