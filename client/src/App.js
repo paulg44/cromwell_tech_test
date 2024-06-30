@@ -11,7 +11,6 @@ import Navbar from "./Components/Navbar";
 // dotenv.config();
 
 function App() {
-  // const deploy = process.env.REACT_BACKEND_URL;
   const deployRegister =
     "https://cromwell-tech-test.onrender.com/user/register";
   // const devRegister = "/user/register";

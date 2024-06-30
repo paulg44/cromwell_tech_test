@@ -1,16 +1,18 @@
-Cromwell Tech Test Backend
+## Cromwell Technical Test
 
-## Tech Stack
+## Register & Login Application
 
-- Node.js: JavaScript runtime environment
-- Express: Framework for handling HTTP requests
-- Postgres: Database for storing users
-- PG:
-- Dotenv
-- Cors
+This application allows a user to
 
-## Future Goals (if I had more time)
+- register their name & email with a password
+- login with a email and password
+- view their name and email address
 
-- Adding authorization through JWT, I had an attempt at this but didn't have the time to implement it fully
-- Full test suite, testing routes and handlers
-- Check an email is not already registered
+The frontend is built using React, while the backend utilizes Express and Node.js. The backend communicates with a PostgreSQL database via an API.
+
+## Deployed Version
+
+The deployed application can be viewed here:
+https://cromwell-tech-test.netlify.app/
+
+## Run Locally
