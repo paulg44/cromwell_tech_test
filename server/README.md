@@ -19,13 +19,13 @@ Cromwell Tech Test Backend
 ## Run server locally
 
 CD into client directory
-cd server
+- cd server
 
 Install any dependencies
-npm install
+- npm install
 
 Start react app
-node server.js
+- node server.js
 
 To make application work ENV variables are needed (in a normal production project, you should NEVER include these private variables)
 
