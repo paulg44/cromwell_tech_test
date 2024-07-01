@@ -16,26 +16,29 @@
 - Landing: Basic landing page that is navigated to when user logs in.
 
 ## Component Tree
+![cromwell_component_tree](https://github.com/paulg44/cromwell_tech_test/assets/100803588/4b354f1e-173f-43aa-b9f8-dee8065fc990)
+
 
 ## Future Goals (if I had more time)
 
 - More tests, particularly focusing on mocking the fetched data. I did start some of these, however, the way my application is set up I haven't found it easy to test. Because I put both the main fetch tests in the App.js file (I did this incase I added Auth) I've nopt been able to test the landing page adequately.
+- Add an error messaged when logging if user doesn't exist
 - Responsiveness of application
 - More data on landing page and homepage
 
 ## Run Locally
 
 CD into client directory
-cd client
+- cd client
 
 Install any dependencies
-npm install
+- npm install
 
 Start react app
-npm start
+- npm start
 
 Or to run tests
-npm test
+- npm test
 
 To make application work in development theres a few more steps
 
