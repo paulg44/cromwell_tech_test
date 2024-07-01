@@ -39,12 +39,14 @@ npm test
 
 To make application work in development theres a few more steps
 
-- In Landing.js file
+In Landing.js file
+
 - Uncomment Line 9
 - Comment Out Line 10
 - Change fetchUserDeploy on Line 14 to fetchUserDev
 
-- In App.js file
+In App.js file
+
 - Uncomment Line 16 & 18
 - Comment Out Line 14/15 & 17
 - Change deployRegister on Line 31 to devRegister
