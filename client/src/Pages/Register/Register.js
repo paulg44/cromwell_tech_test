@@ -15,7 +15,8 @@ function Register({ registerUser }) {
 
     // Password Validation
     function checkPasswordValidation(password) {
-      const passwordRegex = /^[A-Za-z]\w{7,14}$/;
+      const passwordRegex =
+        /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
       if (password.match(passwordRegex)) {
         if (password === passwordConfirm) {

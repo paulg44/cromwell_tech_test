@@ -27,6 +27,7 @@ function App() {
       name: name,
       email: email,
       password: password,
+      test: ["testone", "testtwo"],
     };
     try {
       const response = await fetch(`${deployRegister}`, {
