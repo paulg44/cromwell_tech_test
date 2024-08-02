@@ -2,12 +2,15 @@ import "./Register.css";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { React, useState } from "react";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../../firebase";
 
 function Register({ registerUser }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   async function handleAddNewUser(e) {
@@ -35,9 +38,24 @@ function Register({ registerUser }) {
 
     // If all fields are filled and password is accepted, this code runs
     if (checkPasswordValidation(password)) {
-      await registerUser(name, email, password);
-      alert(`Welcome ${name}. You can now log in with your email and password`);
-      navigate("/login");
+      try {
+        await createUserWithEmailAndPassword(auth, email, password).then(
+          (userCredential) => {
+            const user = userCredential.user;
+
+            updateProfile(user, {
+              displayName: name,
+            });
+            console.log(user);
+            navigate("/login");
+          }
+        );
+      } catch (error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError(errorMessage);
+        console.error(errorCode, errorMessage);
+      }
     }
   }
   return (

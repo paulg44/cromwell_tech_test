@@ -1,38 +1,44 @@
+import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
-
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
+import { useNavigate } from "react-router-dom";
 
-function Landing({ userId, handleLogout }) {
+function Landing() {
   const [user, setUser] = useState(null);
-  // Fetched the logged in users data
-  useEffect(() => {
-    // const fetchUserdev = `/user/get`
-    const fetchUserDeploy = `https://cromwell-tech-test.onrender.com/user/get`;
 
-    async function fetchLoggedInUser(id) {
-      try {
-        // Display the logged in user by id passed down from app
-        const response = await fetch(`${fetchUserDeploy}/${id}`);
-        console.log(response);
-        if (response.ok) {
-          const userData = await response.json();
-          setUser(userData);
-        } else {
-          console.error("Could not get user data");
-        }
-      } catch (error) {
-        console.error("Error fetching logging in user", error);
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    signOut(auth)
+      .then(() => {
+        navigate("/");
+        console.log("Signed out successfully");
+      })
+      .catch(() => {
+        console.error("error signing out");
+      });
+  }
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        setUser(user.displayName);
+        console.log("uid", uid);
+      } else {
+        console.log("user is logged out");
       }
-    }
-    fetchLoggedInUser(userId);
-  }, [userId]);
+    });
+  });
+
   return (
     <div>
       <h2>Welcome</h2>
       {user ? (
         <div>
-          <p>{user.name}</p>
-          <p>{user.email}</p>
+          <p>{user}</p>
         </div>
       ) : (
         <p>Loading user...</p>
